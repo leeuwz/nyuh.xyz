@@ -9,11 +9,11 @@ rebuilt oomf's site to be nextjs && not built using a site builder.
 ├── 🏠 page.tsx
 │   |── example.tsx
 │   └── example1.tsx
-├── /components/
+└── /components/
 │   |── nav.tsx Navigation Menu
 │   |── socials.tsx Links to social media platforms
-│   └── scrollRestoration.tsx Force top of the page on reload, visit.
-└── page.tsx
+│   └── scrollRestoration.tsx Force top of the page on reload/visit
+│   └── motionWrapper.tsx Layout wrapper that handle page fadeIn animation
 ```
 
 Edit or view the website:
