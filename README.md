@@ -25,4 +25,4 @@ Then visit: [http://localhost:3000](http://localhost:3000)
 
 If you decide to use or modify this repo for your own website, please give some credit where its due. ^~^
 
-![nyuhprev](https://github.com/user-attachments/assets/b84fdaf6-037d-4c96-a1b8-7cf58f91c946)
+![nyuhprev](https://github.com/user-attachments/assets/d38fdb6d-d437-4048-84f7-caaea70b625b)
