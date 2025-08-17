@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+:root {
+  --background-height: 100vh;
+  /* --background: #ffffff;
+  --foreground: #171717; */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* --background: #0a0a0a;
+    --foreground: #ededed; */
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body:before {
+    content: '';
+    display: block;
+    background-attachment: scroll;
+    height: var(--background-height);
+    left: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    transform: scale(1);
+    width: 100vw;
+    z-index: -1;
+    background-image: url(/noise.svg), linear-gradient(50deg, rgba(15, 15, 15, 0.851) 0%, rgba(8, 3, 3, 0.941) 100%), url(/background.jpg);
+    background-size: 512px, cover, cover;
+    background-position: center, 0% 0%, center;
+    background-repeat: repeat, repeat, no-repeat;
+    background-color: #000000;
+}
+
+/* Custom font classes */
+.font-raleway {
+  font-family: var(--font-raleway);
+}
+
+.font-quicksand {
+  font-family: var(--font-quicksand);
+}
+
+.font-red-hat-display {
+  font-family: var(--font-red-hat-display);
+}
+
+/* nav styling */
+.nav-link {
+  border-color: rgba(255,255,255,0.169);
+  transition: border-color 250ms, color 250ms;
+}
+
+.nav-link:hover {
+  border-color: #F7395B !important;
+  color: #F7395B !important;
+}
+
+/* Custom scrollbar styling */
+/* WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 15, 15, 0.851);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  border: 2px solid rgba(15, 15, 15, 0.851);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(15, 15, 15, 0.851);
+}
