@@ -10,10 +10,46 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function Index() {
+  // bunch of logic to handle setting sections active and remember which section was last active :3
   const [activeSection, setActiveSection] = useState('home');
 
+  const getSectionFromHash = () => {
+    if (typeof window === 'undefined') return 'home';
+    const hash = window.location.hash.slice(1);
+    const validSections = ['home', 'gfx', 'artworks', 'osu-skins'];
+    return validSections.includes(hash) ? hash : 'home';
+  };
+
+  const updateHash = (section: string) => {
+    if (typeof window !== 'undefined') {
+      if (section === 'home') {
+        window.history.replaceState(null, '', window.location.pathname);
+      } else {
+        window.location.hash = section;
+      }
+    }
+  };
+
+  const handleSetActiveSection = (section: string) => {
+    setActiveSection(section);
+    updateHash(section);
+  };
+
   useEffect(() => {
+    const initialSection = getSectionFromHash();
+    setActiveSection(initialSection);
+
+    const handleHashChange = () => {
+      const newSection = getSectionFromHash();
+      setActiveSection(newSection);
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
     window.scrollTo(0, 0);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
   const renderSection = () => {
@@ -42,7 +78,7 @@ export default function Index() {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="flex flex-col items-center justify-center w-full h-screen"
         >
-          <Nav activeSection={activeSection} setActiveSection={setActiveSection} />
+          <Nav activeSection={activeSection} setActiveSection={handleSetActiveSection} />
           {sectionContent}
         </motion.div>
       </AnimatePresence>
