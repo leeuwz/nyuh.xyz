@@ -69,6 +69,11 @@ body:before {
   color: #F7395B !important;
 }
 
+.nav-link-active {
+  border-color: #F7395B !important;
+  color: #F7395B !important;
+}
+
 /* Custom scrollbar styling */
 /* WebKit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
