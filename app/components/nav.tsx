@@ -12,7 +12,7 @@ export default function Nav({ activeSection, setActiveSection }: NavProps) {
                 <Image
                     alt="nyuhtxtimg"
                     src="/nyuhtxt.png"
-                    className="mt-1"
+                    className="mt-1 w-[140px] h-auto sm:w-[234px] sm:h-auto"
                     width={234}
                     height={234}
                     priority
