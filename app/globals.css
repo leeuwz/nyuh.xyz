@@ -26,7 +26,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body:before {
+/* body:before {
     content: '';
     display: block;
     background-attachment: scroll;
@@ -41,6 +41,26 @@ body:before {
     background-image: url(/noise.svg), linear-gradient(50deg, rgba(15, 15, 15, 0.851) 0%, rgba(8, 3, 3, 0.941) 100%), url(/background.jpg);
     background-size: 512px, cover, cover;
     background-position: center, 0% 0%, center;
+    background-repeat: repeat, repeat, no-repeat;
+    background-color: #000000;
+} */
+/* ^non-position changed bg */
+
+body:before {
+    content: '';
+    display: block;
+    background-attachment: scroll;
+    height: var(--background-height);
+    left: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    transform: scale(1);
+    width: 100vw;
+    z-index: -1;
+    background-image: url(/noise.svg), linear-gradient(50deg, rgba(15, 15, 15, 0.851) 0%, rgba(8, 3, 3, 0.941) 100%), url(/background.jpg);
+    background-size: 512px, cover, cover;
+    background-position: center, 0% 0%, 10% 80%;
     background-repeat: repeat, repeat, no-repeat;
     background-color: #000000;
 }
