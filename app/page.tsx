@@ -1,22 +1,64 @@
+"use client";
+
 import Image from "next/image";
 import Nav from "./components/nav";
-import Socials from "./components/socials";
+import Home from "./sections/home";
+import GFX from "./sections/gfx";
+import Artworks from "./sections/artworks";
+import OsuSkins from "./sections/osuSkins";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 
-export default function Home() {
+export default function Index() {
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const renderSection = () => {
+    const sectionContent = (() => {
+      switch (activeSection) {
+        case 'home':
+          return <Home />;
+        case 'gfx':
+          return <GFX />;
+        case 'artworks':
+          return <Artworks />;
+        case 'osu-skins':
+          return <OsuSkins />;
+        default:
+          return <Home />;
+      }
+    })();
+
+    return (
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeSection}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="flex flex-col items-center justify-center w-full h-screen"
+        >
+          <Nav activeSection={activeSection} setActiveSection={setActiveSection} />
+          {sectionContent}
+        </motion.div>
+      </AnimatePresence>
+    );
+  };
+
   return (
     <>
-    <div className="flex flex-col items-center justify-center h-screen">
-      <Nav/>
-      <Image alt="nyuh" src="/nyuh.png" height={1920} width={1920} className="select-none pointer-events-none my-2 w-[700px] h-auto"/>
-      <Socials/>
-      <hr className="my-5 rounded h-[5.5px] w-[500px] bg-white border-0"/>
-      <div className="mt-1 font-red-hat-display text-white text-[18px] tracking-[0.2rem] text-center">
-        <p className="mb-[0.6em]">she/her ⁃ 20yo</p>
-        <p className="mb-[0.6em]">discord: @nyuh.</p>
-        <p>♡</p>
+      <div className="flex flex-col items-center justify-center h-screen">
+        {renderSection()}
       </div>
-    </div>
-    <div className="flex justify-center mb-10"><Image alt="silly gif" src="/nyuh.gif" width={60} height={60}/></div>
+      {activeSection == "home" && (
+        <div className="flex justify-center mb-10">
+          <Image alt="silly gif" src="/nyuh.gif" width={60} height={60} />
+        </div>
+      )}
     </>
   );
 }
