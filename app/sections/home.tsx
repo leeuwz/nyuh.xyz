@@ -8,7 +8,9 @@ export default function Home() {
                 alt="nyuh" 
                 src="/nyuh.png" 
                 height={1920} 
-                width={1920} 
+                width={1920}
+                quality={100}
+                unoptimized={true}
                 className="select-none pointer-events-none my-2 w-[300px] sm:w-[450px] md:w-[550px] lg:w-[700px] h-auto"
                 priority
             />
