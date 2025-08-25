@@ -31,7 +31,7 @@ export default function ImageCarousel({ images, skinTitle, onImageClick }: Image
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 1.0 }}
           className="absolute inset-0"
           onClick={() => onImageClick(images[currentImageIndex])}
         >
