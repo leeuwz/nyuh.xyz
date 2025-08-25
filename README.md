@@ -10,12 +10,13 @@ rebuilt oomf's site to be nextjs && not built using a site builder.
 └── /components/
 │   |── nav.tsx Navigation Menu
 │   |── socials.tsx Links to social media platforms
-└──   /sections/
+└── 🧩 /sections/
 │   |── home.tsx
 │   |── gfx.tsx
 │   |── artworks.tsx
 │   └── osuSkins.tsx
-└──   /util/
+└── 🔧 /util/
+|   |── imageCarousel.tsx handle image carousel and transition effect
 │   |── scrollRestoration.tsx Force top of the page on reload/visit
 │   └── motionWrapper.tsx Layout wrapper that handle page fadeIn animation
 ```
