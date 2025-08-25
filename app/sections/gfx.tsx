@@ -69,18 +69,20 @@ export default function GFX() {
     const [selectedWork, setSelectedWork] = useState<any>(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    // Close modal on ESC key
+    // Close modal on ESC key and handle arrow keys
     useEffect(() => {
-        const handleEsc = (event: KeyboardEvent) => {
+        const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
-                setSelectedImage(null);
-                setSelectedWork(null);
-                setCurrentImageIndex(0);
+                closeModal();
+            } else if (event.key === 'ArrowRight') {
+                nextImage();
+            } else if (event.key === 'ArrowLeft') {
+                prevImage();
             }
         };
-        window.addEventListener('keydown', handleEsc);
-        return () => window.removeEventListener('keydown', handleEsc);
-    }, []);
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [selectedWork, currentImageIndex]);
 
     const openImageModal = (work: any, imageIndex: number = 0) => {
         setSelectedWork(work);
@@ -99,6 +101,14 @@ export default function GFX() {
             const nextIndex = (currentImageIndex + 1) % selectedWork.images.length;
             setCurrentImageIndex(nextIndex);
             setSelectedImage(selectedWork.images[nextIndex]);
+        }
+    };
+
+    const prevImage = () => {
+        if (selectedWork && selectedWork.images.length > 1) {
+            const prevIndex = currentImageIndex === 0 ? selectedWork.images.length - 1 : currentImageIndex - 1;
+            setCurrentImageIndex(prevIndex);
+            setSelectedImage(selectedWork.images[prevIndex]);
         }
     };
 
@@ -215,11 +225,21 @@ export default function GFX() {
                                 ×
                             </button>
                             
+                            {/* Previous Image Button (only show if multiple images) */}
+                            {selectedWork.images.length > 1 && (
+                                <button
+                                    onClick={nextImage}
+                                    className="cursor-pointer absolute top-1/2 left-[-20px] sm:right-[-25px] transform -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-75 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-sm sm:text-lg font-bold transition-all duration-200"
+                                >
+                                    ←
+                                </button>
+                            )}
+                            
                             {/* Next Image Button (only show if multiple images) */}
                             {selectedWork.images.length > 1 && (
                                 <button
                                     onClick={nextImage}
-                                    className="cursor-pointer absolute top-[-10px] left-[-10px] sm:top-[-15px] sm:left-[-15px] z-10 bg-black bg-opacity-50 hover:bg-opacity-75 text-white rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center text-xs sm:text-sm font-bold transition-all duration-200"
+                                    className="cursor-pointer absolute top-1/2 right-[-20px] sm:right-[-25px] transform -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-75 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-sm sm:text-lg font-bold transition-all duration-200"
                                 >
                                     →
                                 </button>
