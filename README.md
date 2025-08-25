@@ -16,6 +16,7 @@ rebuilt oomf's site to be nextjs && not built using a site builder.
 │   |── artworks.tsx
 │   └── osuSkins.tsx
 └── 🔧 /util/
+|   |── easterEgg.ts easter egg as credit to myself (removable)
 |   |── imageCarousel.tsx handle image carousel and transition effect
 │   |── scrollRestoration.tsx Force top of the page on reload/visit
 │   └── motionWrapper.tsx Layout wrapper that handle page fadeIn animation
