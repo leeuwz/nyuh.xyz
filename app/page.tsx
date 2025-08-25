@@ -8,6 +8,7 @@ import Artworks from "./sections/artworks";
 import OsuSkins from "./sections/osuSkins";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import useEasterEgg from "./util/easteregg";
 
 export default function Index() {
   // bunch of logic to handle setting sections active and remember which section was last active :3
@@ -47,8 +48,11 @@ export default function Index() {
     window.addEventListener('hashchange', handleHashChange);
     window.scrollTo(0, 0);
 
+    const cleanupEasterEgg = useEasterEgg();
+
     return () => {
       window.removeEventListener('hashchange', handleHashChange);
+      cleanupEasterEgg();
     };
   }, []);
 
