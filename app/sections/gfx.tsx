@@ -140,6 +140,7 @@ export default function GFX() {
                                         height={180}
                                         quality={100}
                                         className="hover:scale-110 transition-transform duration-300 select-none w-full sm:w-[280px] md:w-[320px] h-auto object-cover"
+                                        unoptimized
                                     />
                                 </div>
                             </div>
@@ -252,6 +253,7 @@ export default function GFX() {
                                 height={800}
                                 quality={100}
                                 className="w-auto h-auto max-w-full max-h-full object-contain"
+                                unoptimized
                             />
                             
                             {/* Image counter */}
