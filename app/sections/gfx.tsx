@@ -117,26 +117,27 @@ export default function GFX() {
             <div className="flex flex-col items-center justify-center font-red-hat-display text-white text-[16px] sm:text-[18px] md:text-[20px] tracking-[0.15rem] sm:tracking-[0.2rem] text-center py-2 sm:py-4 flex-shrink-0 px-4">
                 <p className="sm:text-[16px] text-[11px]">(may add more stuff but i'm too lazy rn lol)</p>
             </div>
-            
+
             {/* Scrollable container for GFX grid */}
             <div className="flex-1 overflow-y-auto pr-2 sm:pr-4 custom-scrollbar px-2 sm:px-0">
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 pb-8">
                     {gfxWork.map((work, index) => (
-                        <div 
-                            key={index} 
+                        <div
+                            key={index}
                             className="font-red-hat-display flex flex-col sm:flex-row items-start justify-center py-4 sm:py-6 px-4 sm:px-6 rounded-2xl tracking-[0.15rem] sm:tracking-[0.2rem] gap-4 sm:gap-6 transition-transform duration-300"
                             style={{ backgroundColor: 'rgba(25,22,23,0.569)' }}
                         >
                             {/* Image section */}
                             <div className="flex-shrink-0 w-full sm:w-auto">
-                                <div 
+                                <div
                                     className="rounded-lg overflow-hidden shadow-lg cursor-pointer w-full sm:w-auto"
                                     onClick={() => openImageModal(work, 0)}
                                 >
-                                    <Image 
-                                        alt={work.titles[0]} 
-                                        src={work.images[0]} 
-                                        width={320} 
+                                    <Image
+                                        priority={true}
+                                        alt={work.titles[0]}
+                                        src={work.images[0]}
+                                        width={320}
                                         height={180}
                                         quality={100}
                                         className="hover:scale-110 transition-transform duration-300 select-none w-full sm:w-[280px] md:w-[320px] h-auto object-cover"
@@ -144,20 +145,20 @@ export default function GFX() {
                                     />
                                 </div>
                             </div>
-                            
+
                             {/* Content section */}
                             <div className="flex-1 min-w-0 w-full">
-                                <a 
-                                    href={work.gfxUrls[0]} 
+                                <a
+                                    href={work.gfxUrls[0]}
                                     className="text-[20px] sm:text-[22px] md:text-[24px] font-bold underline hover:text-[#F7395B] transition duration-300 block mb-3 break-words"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
                                     {work.titles[0]}
                                 </a>
-                                
+
                                 <hr className="my-3 sm:my-4 rounded h-[2px] sm:h-[3px] bg-white border-0" />
-                                
+
                                 <div className="space-y-2">
                                     {work.descs.map((desc, descIndex) => (
                                         <p key={descIndex} className="text-[12px] sm:text-[14px] break-words">
@@ -165,14 +166,14 @@ export default function GFX() {
                                         </p>
                                     ))}
                                 </div>
-                                
+
                                 {/* Additional titles if available */}
                                 {work.titles.length > 1 && (
                                     <div className="mt-3 sm:mt-4 space-y-1">
                                         {work.titles.slice(1).map((title, titleIndex) => (
                                             <p key={titleIndex} className="text-[10px] sm:text-[12px] text-gray-400 italic break-words">
                                                 <a
-                                                    href={work.gfxUrls[titleIndex + 1] || "#/"} 
+                                                    href={work.gfxUrls[titleIndex + 1] || "#/"}
                                                     className="hover:text-[#F7395B] transition duration-300"
                                                     target="_blank"
                                                     rel="noopener noreferrer"
@@ -183,11 +184,11 @@ export default function GFX() {
                                         ))}
                                     </div>
                                 )}
-                                
+
                                 {/* Additional images indicator */}
                                 {work.images.length > 1 && (
                                     <div className="mt-3">
-                                        <span 
+                                        <span
                                             className="text-[10px] sm:text-[12px] text-gray-500 bg-gray-800 px-2 py-1 rounded cursor-pointer hover:bg-gray-700 hover:text-gray-300 transition-all duration-200 inline-block"
                                             onClick={() => openImageModal(work, 1)}
                                         >
@@ -225,7 +226,7 @@ export default function GFX() {
                             >
                                 ×
                             </button>
-                            
+
                             {/* Previous Image Button (only show if multiple images) */}
                             {selectedWork.images.length > 1 && (
                                 <button
@@ -235,7 +236,7 @@ export default function GFX() {
                                     ←
                                 </button>
                             )}
-                            
+
                             {/* Next Image Button (only show if multiple images) */}
                             {selectedWork.images.length > 1 && (
                                 <button
@@ -245,8 +246,9 @@ export default function GFX() {
                                     →
                                 </button>
                             )}
-                            
+
                             <Image
+                                priority={true}
                                 src={selectedImage}
                                 alt="Full size view"
                                 width={1200}
@@ -255,7 +257,7 @@ export default function GFX() {
                                 className="w-auto h-auto max-w-full max-h-full object-contain"
                                 unoptimized
                             />
-                            
+
                             {/* Image counter */}
                             {selectedWork.images.length > 1 && (
                                 <div className="absolute bottom-[-20px] sm:bottom-[-25px] left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-2 py-1 sm:px-3 sm:py-1 rounded text-xs sm:text-sm">

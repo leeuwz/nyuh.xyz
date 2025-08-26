@@ -16,7 +16,7 @@ export default function ImageCarousel({ images, skinTitle, onImageClick, current
 
   useEffect(() => {
     if (images.length <= 1) return;
-    
+
     // Use global index to sync all carousels
     const newIndex = currentGlobalIndex % images.length;
     setCurrentImageIndex(newIndex);
@@ -35,6 +35,7 @@ export default function ImageCarousel({ images, skinTitle, onImageClick, current
           onClick={onImageClick}
         >
           <Image
+            priority={true}
             src={images[currentImageIndex]}
             alt={`${skinTitle} preview ${currentImageIndex + 1}`}
             fill

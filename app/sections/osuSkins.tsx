@@ -276,6 +276,7 @@ export default function OsuSkins() {
               )}
 
               <Image
+                priority={true}
                 src={selectedImage}
                 alt="Skin preview"
                 width={1200}
